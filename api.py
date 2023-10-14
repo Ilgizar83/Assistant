@@ -6,8 +6,8 @@ serv_refresh_token = None
 access_token = None
 token_exp = None
 refresh_token = None
-url = 'http://gausmain.innopolis.local:8082'
-project_uuid = "5636166e-8793-4227-b6d0-3d98482d6f38"
+url = '*****************'
+project_uuid = "************"
 
 routes = [
     '/api/sign-in',
@@ -18,7 +18,7 @@ routes = [
 ]
 
 
-def auth_serv(login='admin', password='admin'):
+def auth_serv(login='*****', password='*****'):
     try:
         response = requests.post(url + routes[4],
                                  json={'login': login, 'password': password, 'projectUuid': project_uuid})
@@ -31,7 +31,7 @@ def auth_serv(login='admin', password='admin'):
         serv_refresh_token = response.json()['refresh_token']
 
 
-def authorize(login='admin', password='admin'):
+def authorize(login='*******', password='*******'):
     global serv_access_token
     try:
         auth_serv()
