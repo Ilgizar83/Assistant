@@ -22,7 +22,7 @@ def offpc():
 def weather():
     # авторизируемся на сайте https://openweathermap.org для получения информации о погоде
     try:
-        params = {'q': 'Kazan', 'units': 'metric', 'lang': 'ru', 'appid': '08a14fa0243d698514bc9879f886c9b4'}
+        params = {'q': 'Kazan', 'units': 'metric', 'lang': 'ru', 'appid': '*************'}      # чтобы заработало надо изменить appid
         response = requests.get(f'https://api.openweathermap.org/data/2.5/weather', params=params)
         if not response:
             raise
