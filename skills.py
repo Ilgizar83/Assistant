@@ -5,23 +5,22 @@ from myapp.voices import speaker_silero, speaker_gtts
 
 
 def browser():
-    # Открывает браузер заданнный по уполчанию в системе с url указанным здесь
+    # открывает браузер заданнный по умолчанию в системе с url указанным здесь
     webbrowser.open('https://www.youtube.com', new=2)
 
 
 def game():
-    subprocess.Popen('C:\Windows\System32\calc.exe')  # Нужно разместить путь к exe файлу любого вашего приложения
+    # размещаем путь к exe файлу любого приложения или игры, для запуска по команде
+    subprocess.Popen('C:\Windows\System32\calc.exe')
 
 
 def offpc():
-    # Эта команда отключает ПК под управлением Windows
+    # эта команда отключает ПК под управлением Windows
     os.system('shutdown \s')
 
 
-# print('пк был бы выключен, но команде # в коде мешает;)))')
-
 def weather():
-    # Для работы этого кода нужно зарегистрироваться на сайте https://openweathermap.org или переделать на ваше усмотрение под что-то другое
+    # авторизируемся на сайте https://openweathermap.org для получения информации о погоде
     try:
         params = {'q': 'Kazan', 'units': 'metric', 'lang': 'ru', 'appid': '08a14fa0243d698514bc9879f886c9b4'}
         response = requests.get(f'https://api.openweathermap.org/data/2.5/weather', params=params)
@@ -35,19 +34,18 @@ def weather():
 
 
 def offBot():
-    # Отключает бота
+    # команда отключает бота
     sys.exit()
 
 
 def passive():
-    # Функция заглушка при простом диалоге с ботом
+    # функция заглушка при простом диалоге с ботом
     pass
 
 
 def lighton():
-    # включаем подсветку
-    # Подкорректировать гуид
-    uuid = '03a7e3ec-9142-496e-94e0-95179889fdb2'
+    # включаем подсветку логотипа
+    uuid = '***********************'          # нужно указать uuid параметра
     response = api.change_param(uuid, '1')
     print(response)
     if response == 200:
@@ -58,8 +56,7 @@ def lighton():
 
 def lightoff():
     # включаем подсветку
-    # Подкорректировать гуид
-    uuid = '03a7e3ec-9142-496e-94e0-95179889fdb2'
+    uuid = '***********************'        # нужно указать uuid параметра
     response = api.change_param(uuid, '2')
     print(response)
     if response == 200:
@@ -70,8 +67,7 @@ def lightoff():
 
 def lightinfo():
     # включаем подсветку
-    # Подкорректировать гуид
-    uuid = '03a7e3ec-9142-496e-94e0-95179889fdb2'
+    uuid = '***********************'        # нужно указать uuid параметра
     response = api.get_param(uuid)
     print(response)
     if response == '1':
@@ -83,7 +79,8 @@ def lightinfo():
 
 
 def venton():
-    uuid = '8ecb3d59-005b-483a-91af-481dd10966ad'
+    # включаем приточно-вытяжную систему в ЕДЦ
+    uuid = '*************************'      # нужно указать uuid параметра
     response = api.change_param(uuid, '76')
     print(response)
     if response == 200:
@@ -93,7 +90,8 @@ def venton():
 
 
 def ventoff():
-    uuid = '8ecb3d59-005b-483a-91af-481dd10966ad'
+    # отключаем приточно-вытяжную систему в ЕДЦ
+    uuid = '*************************'      # нужно указать uuid параметра
     response = api.change_param(uuid, '6')
     print(response)
     if response == 200:
@@ -103,8 +101,8 @@ def ventoff():
 
 
 def ventinfo():
-    # Подкорректировать гуид
-    uuid = '8ecb3d59-005b-483a-91af-481dd10966ad'
+    # получаем статус работы приточно-вытяжной системы в ЕДЦ
+    uuid = '*************************'      # нужно указать uuid параметра
     response = api.get_param(uuid)
     print(response)
     if response == '76' or response == '70':

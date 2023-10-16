@@ -6,8 +6,8 @@ serv_refresh_token = None
 access_token = None
 token_exp = None
 refresh_token = None
-url = '*****************'
-project_uuid = "************"
+url = '*****************'           # необходимо ссылку на api
+project_uuid = "************"       # тут прописываем uuid проекта
 
 routes = [
     '/api/sign-in',
@@ -18,7 +18,7 @@ routes = [
 ]
 
 
-def auth_serv(login='*****', password='*****'):
+def auth_serv(login='*****', password='*****'):     # логин и пароль для авторизации на сервере
     try:
         response = requests.post(url + routes[4],
                                  json={'login': login, 'password': password, 'projectUuid': project_uuid})

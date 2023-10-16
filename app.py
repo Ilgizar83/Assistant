@@ -14,9 +14,9 @@ from skills import *
 import re
 import voices
 
-# очередь для фразы произносимой
+# очередь для произносимой фразы
 q = queue.Queue()
-# модель русского языка малая
+# малая модель русского языка
 model = vosk.Model('model_small')
 
 # sd.default.device - 1, 4  -- input, output,  т.е. указывается по умолчанию аудиовход и аудиовыход
@@ -53,13 +53,13 @@ def recognize(data, vectorizer, clf):
 
     # получаем вектор полученного текста
     # сравниваем с вариантами, получая наиболее подходящий ответ
-    # Преобразование команды пользователя в числовой вектор
+    # преобразовываем команды в числовой вектор
     user_command_vector = vectorizer.transform([data])
-    # Предсказание вероятностей принадлежности к каждому классу
+    # предсказание вероятностей принадлежности к каждому классу
     predicted_probabilities = clf.predict_proba(user_command_vector)
-    # Задание порога совпадения
+    # задаем порог совпадения
     threshold = 0.10
-    # Поиск наибольшей вероятности и выбор ответа, если он превышает порог
+    # поиск наибольшей вероятности и выбор ответа, если он превышает порог
     max_probability = max(predicted_probabilities[0])
     print(max_probability)
     if max_probability >= threshold:
